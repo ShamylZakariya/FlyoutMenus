@@ -1,0 +1,22 @@
+<resources>
+	<declare-styleable name="FlyoutMenuView">
+		<attr name="buttonBackgroundColor" format="color"/>
+		<attr name="menuBackgroundColor" format="color"/>
+		<attr name="selectedItemBackgroundColor" format="color"/>
+		<attr name="itemWidth" format="dimension"/>
+		<attr name="itemHeight" format="dimension"/>
+		<attr name="itemMargin" format="dimension"/>
+		<attr name="horizontalMenuAnchor" format="float"/>
+		<attr name="horizontalMenuAnchorOutside" format="boolean"/>
+		<attr name="verticalMenuAnchor" format="float"/>
+		<attr name="verticalMenuAnchorOutside" format="boolean"/>
+		<attr name="menuAnchor" format="string"/>
+		<attr name="menuMargin" format="dimension"/>
+		<attr name="buttonSrc" format="reference"/>
+		<attr name="buttonElevation" format="dimension"/>
+		<attr name="menuElevation" format="dimension"/>
+		<attr name="menuBlankerBackgroundColor" format="color"/>
+		<attr name="dialogMode" format="boolean"/>
+
+	</declare-styleable>
+</resources>

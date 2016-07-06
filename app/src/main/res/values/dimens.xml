@@ -1,0 +1,11 @@
+<resources>
+	<!-- Default screen margins, per the Android Design guidelines. -->
+	<dimen name="activity_horizontal_margin">16dp</dimen>
+	<dimen name="activity_vertical_margin">16dp</dimen>
+
+	<dimen name="flyout_menu_button_size">54dp</dimen>
+	<dimen name="flyout_menu_button_margin">16dp</dimen>
+	<dimen name="alpha_checker_size">8dp</dimen>
+	<dimen name="tool_inset">4dp</dimen>
+
+</resources>
