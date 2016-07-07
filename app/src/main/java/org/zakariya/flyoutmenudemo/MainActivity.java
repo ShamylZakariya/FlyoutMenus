@@ -2,6 +2,7 @@ package org.zakariya.flyoutmenudemo;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.ColorUtils;
 import android.support.v7.app.AppCompatActivity;
@@ -190,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
 			@Override
 			public void onItemSelected(FlyoutMenuView flyoutMenuView, FlyoutMenuView.MenuItem item) {
 				paletteFlyoutMenuSelectionId = item.getId();
-				int color = ((PaletteFlyoutMenuItem) item).getColor();
+				@ColorInt int color = ((PaletteFlyoutMenuItem) item).getColor();
 				renderer.setCurrentColor(color);
 				setBrushColor(color);
 			}

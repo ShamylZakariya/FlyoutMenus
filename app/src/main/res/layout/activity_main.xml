@@ -17,7 +17,8 @@
 		android:orientation="horizontal"
 		android:layout_gravity="end|bottom"
 		android:layout_centerVertical="true"
-		android:layout_centerHorizontal="true">
+		android:layout_centerHorizontal="true"
+		android:id="@+id/linearLayout">
 
 		<org.zakariya.flyoutmenu.FlyoutMenuView
 			android:id="@+id/toolSelectorFlyoutMenu"
@@ -27,7 +28,8 @@
 			android:layout_marginLeft="@dimen/flyout_menu_button_margin"
 			android:layout_marginRight="@dimen/flyout_menu_button_margin"
 			app:menuAnchor="top"
-			app:menuBlankerBackgroundColor="@android:color/transparent"
+			app:itemHeight="@dimen/tool_menu_item_size"
+			app:itemWidth="@dimen/tool_menu_item_size"
 			app:selectedItemBackgroundColor="@color/toolSelectionBackgroundColor"
 			/>
 
@@ -40,10 +42,8 @@
 			android:layout_marginRight="@dimen/flyout_menu_button_margin"
 			android:layout_marginBottom="@dimen/flyout_menu_button_margin"
 			app:menuAnchor="top"
-			app:menuBlankerBackgroundColor="@android:color/transparent"
-			app:selectedItemBackgroundColor="@android:color/transparent"
-			app:itemHeight="32dp"
-			app:itemWidth="32dp"
+			app:itemHeight="@dimen/palette_menu_item_size"
+			app:itemWidth="@dimen/palette_menu_item_size"
 			app:itemMargin="0dp"
 			/>
 
@@ -55,7 +55,7 @@
 		android:textAppearance="?android:attr/textAppearanceMedium"
 		android:id="@+id/brushStateTextView"
 		android:gravity="center_horizontal"
-		android:layout_alignParentTop="true"
+		android:layout_above="@+id/linearLayout"
 		android:layout_alignParentStart="true"
 		android:layout_alignParentEnd="true"/>
 

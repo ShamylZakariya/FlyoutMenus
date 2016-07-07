@@ -15,7 +15,8 @@
 		<attr name="buttonSrc" format="reference"/>
 		<attr name="buttonElevation" format="dimension"/>
 		<attr name="menuElevation" format="dimension"/>
-		<attr name="menuBlankerBackgroundColor" format="color"/>
+		<attr name="shieldVisible" format="boolean"/>
+		<attr name="shieldColor" format="color"/>
 		<attr name="dialogMode" format="boolean"/>
 
 	</declare-styleable>

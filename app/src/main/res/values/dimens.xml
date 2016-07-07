@@ -7,6 +7,8 @@
 	<dimen name="flyout_menu_button_margin">16dp</dimen>
 	<dimen name="alpha_checker_size">8dp</dimen>
 	<dimen name="tool_button_inset">8dp</dimen>
+	<dimen name="tool_menu_item_size">48dp</dimen>
+	<dimen name="palette_menu_item_size">40dp</dimen>
 	<dimen name="palette_swatch_inset">8dp</dimen>
 
 </resources>

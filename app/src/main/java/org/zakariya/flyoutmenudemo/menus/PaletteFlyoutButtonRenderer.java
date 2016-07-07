@@ -16,8 +16,10 @@ public class PaletteFlyoutButtonRenderer implements FlyoutMenuView.ButtonRendere
 	Paint paint;
 	RectF insetButtonBounds = new RectF();
 	float inset;
+
 	@ColorInt
 	int currentColor;
+
 	double currentColorLuminance;
 
 	public PaletteFlyoutButtonRenderer(float inset) {
@@ -27,11 +29,13 @@ public class PaletteFlyoutButtonRenderer implements FlyoutMenuView.ButtonRendere
 	}
 
 	@SuppressWarnings("unused")
-	public int getCurrentColor() {
+	public
+	@ColorInt
+	int getCurrentColor() {
 		return currentColor;
 	}
 
-	public void setCurrentColor(int currentColor) {
+	public void setCurrentColor(@ColorInt int currentColor) {
 		this.currentColor = currentColor;
 		currentColorLuminance = ColorUtils.calculateLuminance(this.currentColor);
 	}
@@ -47,6 +51,7 @@ public class PaletteFlyoutButtonRenderer implements FlyoutMenuView.ButtonRendere
 		insetButtonBounds.top = buttonBounds.top + inset;
 		insetButtonBounds.right = buttonBounds.right - inset;
 		insetButtonBounds.bottom = buttonBounds.bottom - inset;
+		
 		paint.setColor(currentColor);
 		canvas.drawOval(insetButtonBounds, paint);
 

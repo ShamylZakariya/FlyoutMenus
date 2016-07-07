@@ -307,7 +307,9 @@ public class FlyoutMenuView extends View implements ValueAnimator.AnimatorUpdate
 	int selectedItemBackgroundColor = 0x0; // defaults to transparent
 
 	@ColorInt
-	int menuBlankerBackgroundColor = 0x77303030;
+	int shieldColor = 0x77303030;
+
+	boolean shieldVisible;
 
 	float buttonElevation;
 	float menuElevation;
@@ -383,7 +385,8 @@ public class FlyoutMenuView extends View implements ValueAnimator.AnimatorUpdate
 		setButtonBackgroundColor(a.getColor(R.styleable.FlyoutMenuView_buttonBackgroundColor, buttonBackgroundColor));
 		setMenuBackgroundColor(a.getColor(R.styleable.FlyoutMenuView_menuBackgroundColor, menuBackgroundColor));
 		setSelectedItemBackgroundColor(a.getColor(R.styleable.FlyoutMenuView_selectedItemBackgroundColor, selectedItemBackgroundColor));
-		setMenuBlankerBackgroundColor(a.getColor(R.styleable.FlyoutMenuView_menuBlankerBackgroundColor, menuBlankerBackgroundColor));
+		setShieldVisible(a.getBoolean(R.styleable.FlyoutMenuView_shieldVisible, false));
+		setShieldColor(a.getColor(R.styleable.FlyoutMenuView_shieldColor, shieldColor));
 		setItemWidth(a.getDimensionPixelSize(R.styleable.FlyoutMenuView_itemWidth, (int) dp2px(DEFAULT_ITEM_SIZE_DP)));
 		setItemHeight(a.getDimensionPixelSize(R.styleable.FlyoutMenuView_itemHeight, (int) dp2px(DEFAULT_ITEM_SIZE_DP)));
 		setItemMargin(a.getDimensionPixelSize(R.styleable.FlyoutMenuView_itemMargin, (int) dp2px(DEFAULT_ITEM_MARGIN_DP)));
@@ -703,20 +706,31 @@ public class FlyoutMenuView extends View implements ValueAnimator.AnimatorUpdate
 	public void setMenuBackgroundColor(@ColorInt int menuBackgroundColor) {
 		this.menuBackgroundColor = ColorUtils.setAlphaComponent(menuBackgroundColor, 255);
 		if (menuOverlayView != null) {
-			invalidate();
+			menuOverlayView.invalidate();
 		}
 	}
 
 	@SuppressWarnings("unused")
 	@ColorInt
-	public int getMenuBlankerBackgroundColor() {
-		return menuBlankerBackgroundColor;
+	public int getShieldColor() {
+		return shieldColor;
 	}
 
-	public void setMenuBlankerBackgroundColor(@ColorInt int menuBlankerBackgroundColor) {
-		this.menuBlankerBackgroundColor = menuBlankerBackgroundColor;
+	public void setShieldColor(@ColorInt int shieldColor) {
+		this.shieldColor = shieldColor;
 		if (menuOverlayView != null) {
-			invalidate();
+			menuOverlayView.invalidate();
+		}
+	}
+
+	public boolean isShieldVisible() {
+		return shieldVisible;
+	}
+
+	public void setShieldVisible(boolean shieldVisible) {
+		this.shieldVisible = shieldVisible;
+		if (menuOverlayView != null) {
+			menuOverlayView.invalidate();
 		}
 	}
 
@@ -754,7 +768,7 @@ public class FlyoutMenuView extends View implements ValueAnimator.AnimatorUpdate
 	public void setSelectedItemBackgroundColor(int selectedItemBackgroundColor) {
 		this.selectedItemBackgroundColor = selectedItemBackgroundColor;
 		if (menuOverlayView != null) {
-			invalidate();
+			menuOverlayView.invalidate();
 		}
 	}
 
@@ -1272,10 +1286,10 @@ public class FlyoutMenuView extends View implements ValueAnimator.AnimatorUpdate
 			computeMenuFill();
 			layoutMenuItems();
 
-			int blankerAlpha = Color.alpha(flyoutMenuView.menuBlankerBackgroundColor);
-			if (blankerAlpha > 0) {
+			int blankerAlpha = Color.alpha(flyoutMenuView.getShieldColor());
+			if (flyoutMenuView.isShieldVisible() && blankerAlpha > 0) {
 				blankerAlpha = (int) (255f * ((blankerAlpha / 255f) * flyoutMenuView.menuOpenTransition));
-				paint.setColor(flyoutMenuView.menuBlankerBackgroundColor);
+				paint.setColor(flyoutMenuView.getShieldColor());
 				paint.setAlpha(blankerAlpha);
 				canvas.drawRect(0, 0, getWidth(), getHeight(), paint);
 			}
