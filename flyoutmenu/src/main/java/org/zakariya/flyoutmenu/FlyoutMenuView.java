@@ -552,10 +552,10 @@ public class FlyoutMenuView extends View implements ValueAnimator.AnimatorUpdate
 
 	/**
 	 * Activities or Fragments may want to dismiss a FlyoutMenu on back button press. If the menu is open,
-	 * this will dismiss it and return true.
+	 * this will dismiss it and return true. If the menu was not open, this will perform no action and will return false.
 	 * @return dismisses the menu, returning true if the menu was open, false if not.
 	 */
-	public boolean handleBackButtonPress(){
+	public boolean dismiss(){
 		if (menuOverlayView != null) {
 			animateMenuOpenChange(false, false);
 			return true;
