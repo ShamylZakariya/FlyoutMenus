@@ -77,10 +77,21 @@ public class MainActivity extends AppCompatActivity {
 
 	@Override
 	public void onBackPressed() {
-		// if any menus are open, dismiss them and consume event. 
-		if (!toolSelectorFlyoutMenu.dismiss() &&
-				!paletteFlyoutMenu.dismiss() &&
-				!smileyFlyoutMenu.dismiss()) {
+		// if any menus are open, dismiss them and consume event.
+		boolean handled = false;
+		if (toolSelectorFlyoutMenu.dismiss()) {
+			handled = true;
+		}
+
+		if (paletteFlyoutMenu.dismiss()) {
+			handled = true;
+		}
+
+		if (smileyFlyoutMenu.dismiss()) {
+			handled = true;
+		}
+		
+		if (!handled) {
 			super.onBackPressed();
 		}
 	}
