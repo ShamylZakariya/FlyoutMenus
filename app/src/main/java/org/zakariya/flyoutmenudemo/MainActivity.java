@@ -75,6 +75,15 @@ public class MainActivity extends AppCompatActivity {
 		super.onSaveInstanceState(outState);
 	}
 
+	@Override
+	public void onBackPressed() {
+		if (!toolSelectorFlyoutMenu.handleBackButtonPress() &&
+				!paletteFlyoutMenu.handleBackButtonPress() &&
+				!smileyFlyoutMenu.handleBackButtonPress()) {
+			super.onBackPressed();
+		}
+	}
+
 	public float getBrushSize() {
 		return brushSize;
 	}
@@ -228,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
 		float fontSizeInButton = getResources().getDimension(R.dimen.flyout_menu_button_size) * 0.5f;
 
 		List<EmojiFlyoutMenu.MenuItem> menuItems = new ArrayList<>();
-		for (int code: emojiCodes) {
+		for (int code : emojiCodes) {
 			menuItems.add(new EmojiFlyoutMenu.MenuItem(menuItems.size(), code, fontSizeInMenu, color));
 		}
 
