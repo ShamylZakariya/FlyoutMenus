@@ -10,10 +10,9 @@ import android.util.TypedValue;
 import android.widget.TextView;
 
 import org.zakariya.flyoutmenu.FlyoutMenuView;
-import org.zakariya.flyoutmenudemo.menus.PaletteFlyoutButtonRenderer;
-import org.zakariya.flyoutmenudemo.menus.PaletteFlyoutMenuItem;
-import org.zakariya.flyoutmenudemo.menus.ToolFlyoutButtonRenderer;
-import org.zakariya.flyoutmenudemo.menus.ToolFlyoutMenuItem;
+import org.zakariya.flyoutmenudemo.menus.EmojiFlyoutMenu;
+import org.zakariya.flyoutmenudemo.menus.PaletteFlyoutMenu;
+import org.zakariya.flyoutmenudemo.menus.ToolFlyoutMenu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,14 +32,21 @@ public class MainActivity extends AppCompatActivity {
 	@Bind(R.id.paletteFlyoutMenu)
 	FlyoutMenuView paletteFlyoutMenu;
 
+	@Bind(R.id.smileyFlyoutMenu)
+	FlyoutMenuView smileyFlyoutMenu;
+
 	@Bind(R.id.brushStateTextView)
 	TextView brushStateTextView;
+
 
 	@State
 	int toolFlyoutMenuSelectionId = 0;
 
 	@State
 	int paletteFlyoutMenuSelectionId = 0;
+
+	@State
+	int smileyFlyoutMenuSelectionId = 0;
 
 	float brushSize;
 	boolean brushIsEraser;
@@ -56,9 +62,11 @@ public class MainActivity extends AppCompatActivity {
 		// build our menus
 		configureToolFlyoutMenu();
 		configurePaletteFlyoutMenu();
+		configureSmileyFlyoutMenu();
 
 		toolSelectorFlyoutMenu.setSelectedMenuItemById(toolFlyoutMenuSelectionId);
 		paletteFlyoutMenu.setSelectedMenuItemById(paletteFlyoutMenuSelectionId);
+		smileyFlyoutMenu.setSelectedMenuItemById(smileyFlyoutMenuSelectionId);
 	}
 
 	@Override
@@ -95,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	@SuppressLint("SetTextI18n")
-	void updateBrushStateTextView(){
+	void updateBrushStateTextView() {
 		@SuppressLint("DefaultLocale")
 		String brushSizeStr = String.format("%.2f", getBrushSize());
 
@@ -116,28 +124,28 @@ public class MainActivity extends AppCompatActivity {
 
 
 		final int count = 6;
-		List<ToolFlyoutMenuItem> items = new ArrayList<>();
+		List<ToolFlyoutMenu.MenuItem> items = new ArrayList<>();
 		for (int i = 0; i < count; i++) {
 			float size = (float) (i + 1) / (float) count;
-			items.add(new ToolFlyoutMenuItem(items.size(), size, false, alphaCheckerSize, alphaCheckerColor, toolColor));
+			items.add(new ToolFlyoutMenu.MenuItem(items.size(), size, false, alphaCheckerSize, alphaCheckerColor, toolColor));
 		}
 
 		for (int i = 0; i < count; i++) {
 			float size = (float) (i + 1) / (float) count;
-			items.add(new ToolFlyoutMenuItem(items.size(), size, true, alphaCheckerSize, alphaCheckerColor, toolColor));
+			items.add(new ToolFlyoutMenu.MenuItem(items.size(), size, true, alphaCheckerSize, alphaCheckerColor, toolColor));
 		}
 
 		toolSelectorFlyoutMenu.setLayout(new FlyoutMenuView.GridLayout(count, FlyoutMenuView.GridLayout.UNSPECIFIED));
 		toolSelectorFlyoutMenu.setAdapter(new FlyoutMenuView.ArrayAdapter<>(items));
 
-		final ToolFlyoutButtonRenderer toolButtonRenderer = new ToolFlyoutButtonRenderer(toolInset, 1, false, alphaCheckerSize, alphaCheckerColor, toolColor);
+		final ToolFlyoutMenu.ButtonRenderer toolButtonRenderer = new ToolFlyoutMenu.ButtonRenderer(toolInset, 1, false, alphaCheckerSize, alphaCheckerColor, toolColor);
 		toolSelectorFlyoutMenu.setButtonRenderer(toolButtonRenderer);
 
 		toolSelectorFlyoutMenu.setSelectionListener(new FlyoutMenuView.SelectionListener() {
 			@Override
 			public void onItemSelected(FlyoutMenuView flyoutMenuView, FlyoutMenuView.MenuItem item) {
 				toolFlyoutMenuSelectionId = item.getId();
-				ToolFlyoutMenuItem toolMenuItem = (ToolFlyoutMenuItem) item;
+				ToolFlyoutMenu.MenuItem toolMenuItem = (ToolFlyoutMenu.MenuItem) item;
 
 				toolButtonRenderer.setSize(toolMenuItem.getSize());
 				toolButtonRenderer.setIsEraser(toolMenuItem.isEraser());
@@ -163,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
 
 		paletteFlyoutMenu.setLayout(new FlyoutMenuView.GridLayout(cols, FlyoutMenuView.GridLayout.UNSPECIFIED));
 
-		List<PaletteFlyoutMenuItem> items = new ArrayList<>();
+		List<PaletteFlyoutMenu.MenuItem> items = new ArrayList<>();
 		for (int r = 0; r < rows; r++) {
 			float hue = 360f * ((float) r / (float) rows);
 			hsl[0] = hue;
@@ -177,21 +185,21 @@ public class MainActivity extends AppCompatActivity {
 					hsl[1] = 1;
 					hsl[2] = lightness;
 				}
-				items.add(new PaletteFlyoutMenuItem(items.size(), ColorUtils.HSLToColor(hsl), cornerRadius));
+				items.add(new PaletteFlyoutMenu.MenuItem(items.size(), ColorUtils.HSLToColor(hsl), cornerRadius));
 			}
 		}
 
 		paletteFlyoutMenu.setAdapter(new FlyoutMenuView.ArrayAdapter<>(items));
 
 		float inset = getResources().getDimension(R.dimen.palette_swatch_inset);
-		final PaletteFlyoutButtonRenderer renderer = new PaletteFlyoutButtonRenderer(inset);
+		final PaletteFlyoutMenu.ButtonRenderer renderer = new PaletteFlyoutMenu.ButtonRenderer(inset);
 		paletteFlyoutMenu.setButtonRenderer(renderer);
 
 		paletteFlyoutMenu.setSelectionListener(new FlyoutMenuView.SelectionListener() {
 			@Override
 			public void onItemSelected(FlyoutMenuView flyoutMenuView, FlyoutMenuView.MenuItem item) {
 				paletteFlyoutMenuSelectionId = item.getId();
-				@ColorInt int color = ((PaletteFlyoutMenuItem) item).getColor();
+				@ColorInt int color = ((PaletteFlyoutMenu.MenuItem) item).getColor();
 				renderer.setCurrentColor(color);
 				setBrushColor(color);
 			}
@@ -200,6 +208,48 @@ public class MainActivity extends AppCompatActivity {
 			public void onDismissWithoutSelection(FlyoutMenuView flyoutMenuView) {
 			}
 		});
+	}
+
+	void configureSmileyFlyoutMenu() {
+
+		int[] emojiCodes = {
+				0x1F60D, //smiling face heart shaped eyes
+				0x1F605, // smiling face with open mouth and cold sweat
+				0x1F60A, // smiling face
+				0x1F613, // face with cold sweat
+				0x1F61E, // disappointed face
+				0x1F620, // angry face
+				0x1F62D, // loudly crying face
+				0x1F4A9, // pile of poo
+		};
+
+		@ColorInt int color = ContextCompat.getColor(this, R.color.smileyMenuCharColor);
+		float fontSizeInMenu = getResources().getDimension(R.dimen.smiley_menu_item_size) * 0.5f;
+		float fontSizeInButton = getResources().getDimension(R.dimen.flyout_menu_button_size) * 0.5f;
+
+		List<EmojiFlyoutMenu.MenuItem> menuItems = new ArrayList<>();
+		for (int code: emojiCodes) {
+			menuItems.add(new EmojiFlyoutMenu.MenuItem(menuItems.size(), code, fontSizeInMenu, color));
+		}
+
+		smileyFlyoutMenu.setLayout(new FlyoutMenuView.GridLayout(2, FlyoutMenuView.GridLayout.UNSPECIFIED));
+		smileyFlyoutMenu.setAdapter(new FlyoutMenuView.ArrayAdapter<>(menuItems));
+
+		final EmojiFlyoutMenu.ButtonRenderer renderer = new EmojiFlyoutMenu.ButtonRenderer(emojiCodes[0], fontSizeInButton, color);
+		smileyFlyoutMenu.setButtonRenderer(renderer);
+
+		smileyFlyoutMenu.setSelectionListener(new FlyoutMenuView.SelectionListener() {
+			@Override
+			public void onItemSelected(FlyoutMenuView flyoutMenuView, FlyoutMenuView.MenuItem item) {
+				smileyFlyoutMenuSelectionId = item.getId();
+				renderer.setEmojiCode(((EmojiFlyoutMenu.MenuItem) item).getEmojiCode());
+			}
+
+			@Override
+			public void onDismissWithoutSelection(FlyoutMenuView flyoutMenuView) {
+			}
+		});
+
 	}
 
 }

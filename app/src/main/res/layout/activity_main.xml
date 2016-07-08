@@ -1,35 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:paddingBottom="@dimen/activity_vertical_margin"
-	android:paddingLeft="@dimen/activity_horizontal_margin"
-	android:paddingRight="@dimen/activity_horizontal_margin"
-	android:paddingTop="@dimen/activity_vertical_margin"
 	tools:context="org.zakariya.flyoutmenudemo.MainActivity">
 
 	<LinearLayout
+		android:id="@+id/linearLayout"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:orientation="horizontal"
-		android:layout_gravity="end|bottom"
-		android:layout_centerVertical="true"
 		android:layout_centerHorizontal="true"
-		android:id="@+id/linearLayout">
+		android:layout_centerVertical="true"
+		android:layout_gravity="end|bottom"
+		android:orientation="horizontal">
 
 		<org.zakariya.flyoutmenu.FlyoutMenuView
 			android:id="@+id/toolSelectorFlyoutMenu"
 			android:layout_width="@dimen/flyout_menu_button_size"
 			android:layout_height="@dimen/flyout_menu_button_size"
-			android:layout_marginTop="@dimen/flyout_menu_button_margin"
 			android:layout_marginLeft="@dimen/flyout_menu_button_margin"
 			android:layout_marginRight="@dimen/flyout_menu_button_margin"
-			app:menuAnchor="top"
+			android:layout_marginTop="@dimen/flyout_menu_button_margin"
 			app:itemHeight="@dimen/tool_menu_item_size"
 			app:itemWidth="@dimen/tool_menu_item_size"
+			app:menuAnchor="top"
 			app:selectedItemBackgroundColor="@color/toolSelectionBackgroundColor"
 			/>
 
@@ -37,26 +33,47 @@
 			android:id="@+id/paletteFlyoutMenu"
 			android:layout_width="@dimen/flyout_menu_button_size"
 			android:layout_height="@dimen/flyout_menu_button_size"
-			android:layout_marginTop="@dimen/flyout_menu_button_margin"
+			android:layout_marginBottom="@dimen/flyout_menu_button_margin"
 			android:layout_marginLeft="@dimen/flyout_menu_button_margin"
 			android:layout_marginRight="@dimen/flyout_menu_button_margin"
-			android:layout_marginBottom="@dimen/flyout_menu_button_margin"
-			app:menuAnchor="top"
+			android:layout_marginTop="@dimen/flyout_menu_button_margin"
 			app:itemHeight="@dimen/palette_menu_item_size"
-			app:itemWidth="@dimen/palette_menu_item_size"
 			app:itemMargin="0dp"
+			app:itemWidth="@dimen/palette_menu_item_size"
+			app:menuAnchor="top"
 			/>
 
 	</LinearLayout>
 
 	<TextView
+		android:id="@+id/brushStateTextView"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:textAppearance="?android:attr/textAppearanceMedium"
-		android:id="@+id/brushStateTextView"
-		android:gravity="center_horizontal"
 		android:layout_above="@+id/linearLayout"
+		android:layout_alignParentEnd="true"
 		android:layout_alignParentStart="true"
-		android:layout_alignParentEnd="true"/>
+		android:gravity="center_horizontal"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		tools:text="Brush info"/>
+
+
+	<org.zakariya.flyoutmenu.FlyoutMenuView
+		android:id="@+id/smileyFlyoutMenu"
+		android:layout_width="@dimen/flyout_menu_button_size"
+		android:layout_height="@dimen/flyout_menu_button_size"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentEnd="true"
+		android:layout_marginBottom="@dimen/flyout_menu_button_margin"
+		android:layout_marginLeft="@dimen/flyout_menu_button_margin"
+		android:layout_marginRight="@dimen/flyout_menu_button_margin"
+		android:layout_marginTop="@dimen/flyout_menu_button_margin"
+		app:dialogMode="true"
+		app:itemHeight="@dimen/smiley_menu_item_size"
+		app:itemMargin="@dimen/smiley_menu_item_margin"
+		app:itemWidth="@dimen/smiley_menu_item_size"
+		app:menuAnchor="left"
+		app:selectedItemBackgroundColor="@color/smileyMenuSelectionColor"
+		app:shieldVisible="true"
+		/>
 
 </RelativeLayout>

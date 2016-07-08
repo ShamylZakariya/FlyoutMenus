@@ -97,8 +97,23 @@ public class FlyoutMenuView extends View implements ValueAnimator.AnimatorUpdate
 		}
 	}
 
-	public interface ButtonRenderer {
-		void onDraw(Canvas canvas, RectF buttonBounds, @ColorInt int buttonColor, float alpha);
+	public static abstract class ButtonRenderer {
+
+		Paint paint;
+
+		public ButtonRenderer() {
+			paint = new Paint();
+			paint.setAntiAlias(true);
+		}
+
+		public void onDrawButtonBase(Canvas canvas, RectF buttonBounds, @ColorInt int buttonColor, float alpha) {
+			paint.setAlpha((int) (alpha * 255f));
+			paint.setColor(buttonColor);
+			paint.setStyle(Paint.Style.FILL);
+			canvas.drawOval(buttonBounds, paint);
+		}
+
+		abstract public void onDrawButtonContent(Canvas canvas, RectF buttonBounds, @ColorInt int buttonColor, float alpha);
 	}
 
 	/**
@@ -500,7 +515,8 @@ public class FlyoutMenuView extends View implements ValueAnimator.AnimatorUpdate
 
 			buttonDrawable.draw(canvas);
 		} else if (buttonRenderer != null) {
-			buttonRenderer.onDraw(canvas, buttonFillOval, buttonBackgroundColor, alpha);
+			buttonRenderer.onDrawButtonBase(canvas, buttonFillOval, buttonBackgroundColor, alpha);
+			buttonRenderer.onDrawButtonContent(canvas, buttonFillOval, buttonBackgroundColor, alpha);
 		}
 	}
 
