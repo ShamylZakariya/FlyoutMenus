@@ -51,6 +51,7 @@ public class PaletteFlyoutMenu {
 
 			paint.setAlpha((int) (alpha * 255f));
 			paint.setColor(currentColor);
+			paint.setStyle(Paint.Style.FILL);
 			canvas.drawOval(insetButtonBounds, paint);
 
 			if (currentColorLuminance > 0.7) {
