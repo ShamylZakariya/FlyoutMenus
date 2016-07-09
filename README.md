@@ -8,7 +8,7 @@ The default behavior of the FlyoutMenuView is a simple press-to-open, drag-to-it
 
 ## Layout
 In your layout XML:
-```
+```xml
 <org.zakariya.flyoutmenu.FlyoutMenuView
 	android:id="@+id/myMenu"
 	android:layout_width="@dimen/flyout_menu_button_size"
@@ -88,7 +88,7 @@ You must also provide a subclass of `FlyoutMenuView.MenuItem` to render your ite
   
 Here's an example implementation of `FlyoutMenuView.MenuItem` and `FlyoutmenuView.ButtonRenderer` which draws a simple unicode character. I use it in the demo app to render emoji.
 
-```
+```java
 public class EmojiFlyoutMenu {
 
 	static String getEmojiByUnicode(int unicode){
@@ -165,7 +165,7 @@ public class EmojiFlyoutMenu {
 
 To use the above:
 
-```
+```java
 FlyoutMenuView smileyFlyoutMenu = findViewById(R.id.smileyFlyoutMenu); 
 
 int[] emojiCodes = {
