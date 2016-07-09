@@ -26,7 +26,7 @@ In your layout XML:
 
 Available attributes are:
 
-```
+```xml
 // the background color of the trigger button
 <attr name="buttonBackgroundColor" format="color"/>
 
