@@ -1,13 +1,16 @@
 # FlyoutMenus
 Simple material-style flyout menus for Android. There are many flyout type menus for Android, but this one is mine.
+
+```gradle
+compile 'org.zakariya.flyoutmenus:flyoutmenu:0.5.0'
+```
+
 ![BasicDemo](readme-assets/flyoutmenus-big.gif)
 
 ---
 
-The default behavior of the FlyoutMenuView is a simple press-to-open, drag-to-item, release-to-select model. FlyoutMenuView also supports a `dialogMode` behavior where the behavior changes to tap-to-open, tap-to-select with automatic dismissal on selection or tap-outside. 
+## XML
 
-## Layout
-In your layout XML:
 ```xml
 <org.zakariya.flyoutmenu.FlyoutMenuView
 	android:id="@+id/myMenu"
