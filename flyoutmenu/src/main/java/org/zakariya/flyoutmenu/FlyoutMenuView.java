@@ -19,6 +19,7 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.support.v4.graphics.ColorUtils;
@@ -300,6 +301,8 @@ public class FlyoutMenuView extends View implements ValueAnimator.AnimatorUpdate
 	private static final int DEFAULT_ITEM_SIZE_DP = 48;
 	private static final int DEFAULT_ITEM_MARGIN_DP = 8;
 
+	private static final int DEFAULT_BUTTON_SIZE_DP = 56;
+
 	private static final float DEFAULT_HORIZONTAL_MENU_ANCHOR = 1f;
 	private static final boolean DEFAULT_HORIZONTAL_MENU_ANCHOR_OUTSIDE = false;
 	private static final float DEFAULT_VERTICAL_MENU_ANCHOR = 0.5f;
@@ -329,6 +332,7 @@ public class FlyoutMenuView extends View implements ValueAnimator.AnimatorUpdate
 	float buttonElevation;
 	float menuElevation;
 
+	int buttonSize;
 	PointF buttonCenter;
 	RectF buttonFillOval = new RectF();
 	int buttonRadius;
@@ -381,6 +385,12 @@ public class FlyoutMenuView extends View implements ValueAnimator.AnimatorUpdate
 	}
 
 	private void init(AttributeSet attrs, int defStyle) {
+
+		// workaround for lack of clip path in API < 18
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2) {
+			setLayerType(LAYER_TYPE_SOFTWARE, null);
+		}
+
 		paint = new Paint();
 		paint.setAntiAlias(true);
 
@@ -396,6 +406,7 @@ public class FlyoutMenuView extends View implements ValueAnimator.AnimatorUpdate
 		// Load attributes
 		final TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlyoutMenuView, defStyle, 0);
 
+		setButtonSize(a.getDimensionPixelSize(R.styleable.FlyoutMenuView_buttonSize, (int)dp2px(DEFAULT_BUTTON_SIZE_DP)));
 		setDialogMode(a.getBoolean(R.styleable.FlyoutMenuView_dialogMode, false));
 		setButtonBackgroundColor(a.getColor(R.styleable.FlyoutMenuView_buttonBackgroundColor, buttonBackgroundColor));
 		setMenuBackgroundColor(a.getColor(R.styleable.FlyoutMenuView_menuBackgroundColor, menuBackgroundColor));
@@ -456,6 +467,40 @@ public class FlyoutMenuView extends View implements ValueAnimator.AnimatorUpdate
 			v.setClipChildren(false);
 		}
 	}
+
+	@Override
+	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+
+		int desiredWidth = getPaddingLeft() + getPaddingRight() + getButtonSize();
+		int desiredHeight = getPaddingTop() + getPaddingBottom() + getButtonSize();
+		int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+		int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+		int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+		int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+
+		int width;
+		int height;
+
+		if (widthMode == MeasureSpec.EXACTLY) {
+			width = widthSize;
+		} else if (widthMode == MeasureSpec.AT_MOST) {
+			width = Math.min(desiredWidth, widthSize);
+		} else {
+			width = desiredWidth;
+		}
+
+		if (heightMode == MeasureSpec.EXACTLY) {
+			height = heightSize;
+		} else if (heightMode == MeasureSpec.AT_MOST) {
+			height = Math.min(desiredHeight, heightSize);
+		} else {
+			height = desiredHeight;
+		}
+
+		// apply measurement
+		setMeasuredDimension(width, height);
+	}
+
 
 	@Override
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
@@ -1035,10 +1080,25 @@ public class FlyoutMenuView extends View implements ValueAnimator.AnimatorUpdate
 		this.dialogMode = dialogMode;
 	}
 
+	/**
+	 * @return the size in pixels of the trigger button
+	 */
+	public int getButtonSize() {
+		return buttonSize;
+	}
+
+	/**
+	 * @param buttonSize the size in pixels of the trigger button
+	 */
+	public void setButtonSize(int buttonSize) {
+		this.buttonSize = buttonSize;
+		requestLayout();
+	}
+
 	void updateLayoutInfo() {
-		float innerWidth = getWidth() - getPaddingLeft() + getPaddingRight();
-		float innerHeight = getHeight() - getPaddingTop() + getPaddingBottom();
-		buttonCenter = new PointF(getPaddingLeft() + innerWidth / 2, getPaddingTop() + innerHeight / 2);
+		float innerWidth = getWidth() - (getPaddingLeft() + getPaddingRight());
+		float innerHeight = getHeight() - (getPaddingTop() + getPaddingBottom());
+		buttonCenter = new PointF(getPaddingLeft() + (innerWidth / 2), getPaddingTop() + (innerHeight / 2));
 		buttonRadius = (int) Math.min(innerWidth / 2, innerHeight / 2);
 		buttonFillOval = new RectF(
 				buttonCenter.x - buttonRadius,
@@ -1272,6 +1332,12 @@ public class FlyoutMenuView extends View implements ValueAnimator.AnimatorUpdate
 
 		public MenuOverlayView(Context context, FlyoutMenuView flyoutMenuView) {
 			super(context);
+
+			// workaround for lack of clip path in API < 18
+			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2) {
+				setLayerType(LAYER_TYPE_SOFTWARE, null);
+			}
+
 			paint = new Paint();
 			paint.setAntiAlias(true);
 			this.flyoutMenuView = flyoutMenuView;

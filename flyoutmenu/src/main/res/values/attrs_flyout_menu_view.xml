@@ -1,5 +1,6 @@
 <resources>
 	<declare-styleable name="FlyoutMenuView">
+		<attr name="buttonSize" format="dimension"/>
 		<attr name="buttonBackgroundColor" format="color"/>
 		<attr name="menuBackgroundColor" format="color"/>
 		<attr name="selectedItemBackgroundColor" format="color"/>

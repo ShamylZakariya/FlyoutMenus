@@ -18,11 +18,10 @@
 
 		<org.zakariya.flyoutmenu.FlyoutMenuView
 			android:id="@+id/toolSelectorFlyoutMenu"
-			android:layout_width="@dimen/flyout_menu_button_size"
-			android:layout_height="@dimen/flyout_menu_button_size"
-			android:layout_marginLeft="@dimen/flyout_menu_button_margin"
-			android:layout_marginRight="@dimen/flyout_menu_button_margin"
-			android:layout_marginTop="@dimen/flyout_menu_button_margin"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:padding="@dimen/flyout_menu_button_padding"
+			app:buttonSize="@dimen/flyout_menu_button_size"
 			app:itemHeight="@dimen/tool_menu_item_size"
 			app:itemWidth="@dimen/tool_menu_item_size"
 			app:menuAnchor="top"
@@ -31,12 +30,10 @@
 
 		<org.zakariya.flyoutmenu.FlyoutMenuView
 			android:id="@+id/paletteFlyoutMenu"
-			android:layout_width="@dimen/flyout_menu_button_size"
-			android:layout_height="@dimen/flyout_menu_button_size"
-			android:layout_marginBottom="@dimen/flyout_menu_button_margin"
-			android:layout_marginLeft="@dimen/flyout_menu_button_margin"
-			android:layout_marginRight="@dimen/flyout_menu_button_margin"
-			android:layout_marginTop="@dimen/flyout_menu_button_margin"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:padding="@dimen/flyout_menu_button_padding"
+			app:buttonSize="@dimen/flyout_menu_button_size"
 			app:itemHeight="@dimen/palette_menu_item_size"
 			app:itemMargin="0dp"
 			app:itemWidth="@dimen/palette_menu_item_size"
@@ -52,6 +49,8 @@
 		android:layout_above="@+id/linearLayout"
 		android:layout_alignParentEnd="true"
 		android:layout_alignParentStart="true"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentRight="true"
 		android:gravity="center_horizontal"
 		android:textAppearance="?android:attr/textAppearanceMedium"
 		tools:text="Brush info"/>
@@ -59,12 +58,10 @@
 
 	<org.zakariya.flyoutmenu.FlyoutMenuView
 		android:id="@+id/smileyFlyoutMenu"
-		android:layout_width="@dimen/flyout_menu_button_size"
-		android:layout_height="@dimen/flyout_menu_button_size"
-		android:layout_marginTop="@dimen/flyout_menu_button_margin"
-		android:layout_marginBottom="@dimen/flyout_menu_button_margin"
-		android:layout_marginLeft="@dimen/flyout_menu_button_margin"
-		android:layout_marginRight="@dimen/flyout_menu_button_margin"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:padding="@dimen/flyout_menu_button_padding"
+		app:buttonSize="@dimen/flyout_menu_button_size"
 		app:dialogMode="true"
 		app:itemHeight="@dimen/smiley_menu_item_size"
 		app:itemMargin="@dimen/smiley_menu_item_margin"
@@ -73,6 +70,7 @@
 		app:selectedItemBackgroundColor="@color/smileyMenuSelectionColor"
 		app:shieldVisible="true"
 		android:layout_alignParentTop="true"
-		android:layout_alignParentEnd="true"/>
+		android:layout_alignParentEnd="true"
+		android:layout_alignParentRight="true"/>
 
 </RelativeLayout>

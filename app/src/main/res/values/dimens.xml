@@ -4,7 +4,7 @@
 	<dimen name="activity_vertical_margin">16dp</dimen>
 
 	<dimen name="flyout_menu_button_size">54dp</dimen>
-	<dimen name="flyout_menu_button_margin">16dp</dimen>
+	<dimen name="flyout_menu_button_padding">16dp</dimen>
 
 	<dimen name="tool_button_inset">8dp</dimen>
 	<dimen name="tool_menu_item_size">48dp</dimen>

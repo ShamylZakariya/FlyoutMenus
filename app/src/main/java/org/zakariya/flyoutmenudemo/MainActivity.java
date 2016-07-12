@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 		if (smileyFlyoutMenu.dismiss()) {
 			handled = true;
 		}
-		
+
 		if (!handled) {
 			super.onBackPressed();
 		}

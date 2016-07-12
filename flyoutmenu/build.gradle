@@ -3,14 +3,14 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 
 group = 'org.zakariya.flyoutmenus'
-version = '0.5.0'
+version = '0.5.1'
 
 android {
 	compileSdkVersion 23
 	buildToolsVersion "23.0.2"
 
 	defaultConfig {
-		minSdkVersion 17
+		minSdkVersion 16
 		targetSdkVersion 23
 		versionCode 1
 		versionName version
