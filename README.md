@@ -5,6 +5,11 @@ Simple material-style flyout menus for Android. There are many flyout type menus
 compile 'org.zakariya.flyoutmenus:flyoutmenu:0.5.0'
 ```
 
+- minSdkVersion: 16
+*Note: when running on SDK less than 18, hardware rendering is disabled. This means that button shadows are clipped. To work around this, add a bit of padding to the view.*
+
+---
+
 ![BasicDemo](readme-assets/flyoutmenus-big.gif)
 
 ---
@@ -14,12 +19,13 @@ compile 'org.zakariya.flyoutmenus:flyoutmenu:0.5.0'
 ```xml
 <org.zakariya.flyoutmenu.FlyoutMenuView
 	android:id="@+id/myMenu"
-	android:layout_width="@dimen/flyout_menu_button_size"
-	android:layout_height="@dimen/flyout_menu_button_size"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
 	android:layout_marginBottom="@dimen/flyout_menu_button_margin"
 	android:layout_marginLeft="@dimen/flyout_menu_button_margin"
 	android:layout_marginRight="@dimen/flyout_menu_button_margin"
 	android:layout_marginTop="@dimen/flyout_menu_button_margin"
+	app:buttonSize="@dimen/flyout_menu_button_size"
 	app:itemHeight="@dimen/palette_menu_item_size"
 	app:itemMargin="0dp"
 	app:itemWidth="@dimen/palette_menu_item_size"
@@ -30,6 +36,10 @@ compile 'org.zakariya.flyoutmenus:flyoutmenu:0.5.0'
 Available attributes are:
 
 ```xml
+
+// the size of the button
+<attr name="buttonSize" format="dimension"/>
+
 // the background color of the trigger button
 <attr name="buttonBackgroundColor" format="color"/>
 
