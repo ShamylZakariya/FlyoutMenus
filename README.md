@@ -2,7 +2,7 @@
 Simple material-style flyout menus for Android. There are many flyout type menus for Android, but this one is mine.
 
 ```gradle
-compile 'org.zakariya.flyoutmenus:flyoutmenu:0.5.0'
+compile 'org.zakariya.flyoutmenus:flyoutmenu:0.5.1'
 ```
 
 - minSdkVersion: 16
