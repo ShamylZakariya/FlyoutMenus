@@ -1,6 +1,7 @@
 package org.zakariya.flyoutmenudemo;
 
 import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.v4.content.ContextCompat;
@@ -244,12 +245,27 @@ public class MainActivity extends AppCompatActivity {
 				0x1F4A9, // pile of poo
 		};
 
+		int[] charCodes = {
+				0x0041,
+				0x0042,
+				0x0043,
+				0x0044,
+				0x0045,
+				0x0046,
+				0x0047,
+				0x0048,
+		};
+
+		final boolean canUseEmoji = Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN;
+
 		@ColorInt int color = ContextCompat.getColor(this, R.color.smileyMenuCharColor);
 		float fontSizeInMenu = getResources().getDimension(R.dimen.smiley_menu_item_size) * 0.5f;
 		float fontSizeInButton = getResources().getDimension(R.dimen.flyout_menu_button_size) * 0.5f;
 
 		List<EmojiFlyoutMenu.MenuItem> menuItems = new ArrayList<>();
-		for (int code : emojiCodes) {
+
+		for (int i = 0; i < emojiCodes.length; i++) {
+			int code = canUseEmoji ? emojiCodes[i] : charCodes[i];
 			menuItems.add(new EmojiFlyoutMenu.MenuItem(menuItems.size(), code, fontSizeInMenu, color));
 		}
 
