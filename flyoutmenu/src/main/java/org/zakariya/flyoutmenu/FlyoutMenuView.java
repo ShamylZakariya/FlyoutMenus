@@ -406,29 +406,29 @@ public class FlyoutMenuView extends View implements ValueAnimator.AnimatorUpdate
 		// Load attributes
 		final TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlyoutMenuView, defStyle, 0);
 
-		setButtonSize(a.getDimensionPixelSize(R.styleable.FlyoutMenuView_buttonSize, (int)dp2px(DEFAULT_BUTTON_SIZE_DP)));
-		setDialogMode(a.getBoolean(R.styleable.FlyoutMenuView_dialogMode, false));
-		setButtonBackgroundColor(a.getColor(R.styleable.FlyoutMenuView_buttonBackgroundColor, buttonBackgroundColor));
-		setMenuBackgroundColor(a.getColor(R.styleable.FlyoutMenuView_menuBackgroundColor, menuBackgroundColor));
-		setSelectedItemBackgroundColor(a.getColor(R.styleable.FlyoutMenuView_selectedItemBackgroundColor, selectedItemBackgroundColor));
-		setShieldVisible(a.getBoolean(R.styleable.FlyoutMenuView_shieldVisible, false));
-		setShieldColor(a.getColor(R.styleable.FlyoutMenuView_shieldColor, shieldColor));
-		setItemWidth(a.getDimensionPixelSize(R.styleable.FlyoutMenuView_itemWidth, (int) dp2px(DEFAULT_ITEM_SIZE_DP)));
-		setItemHeight(a.getDimensionPixelSize(R.styleable.FlyoutMenuView_itemHeight, (int) dp2px(DEFAULT_ITEM_SIZE_DP)));
-		setItemMargin(a.getDimensionPixelSize(R.styleable.FlyoutMenuView_itemMargin, (int) dp2px(DEFAULT_ITEM_MARGIN_DP)));
+		setButtonSize(a.getDimensionPixelSize(R.styleable.FlyoutMenuView_fmButtonSize, (int)dp2px(DEFAULT_BUTTON_SIZE_DP)));
+		setDialogMode(a.getBoolean(R.styleable.FlyoutMenuView_fmDialogMode, false));
+		setButtonBackgroundColor(a.getColor(R.styleable.FlyoutMenuView_fmButtonBackgroundColor, buttonBackgroundColor));
+		setMenuBackgroundColor(a.getColor(R.styleable.FlyoutMenuView_fmMenuBackgroundColor, menuBackgroundColor));
+		setSelectedItemBackgroundColor(a.getColor(R.styleable.FlyoutMenuView_fmSelectedItemBackgroundColor, selectedItemBackgroundColor));
+		setShieldVisible(a.getBoolean(R.styleable.FlyoutMenuView_fmShieldVisible, false));
+		setShieldColor(a.getColor(R.styleable.FlyoutMenuView_fmShieldColor, shieldColor));
+		setItemWidth(a.getDimensionPixelSize(R.styleable.FlyoutMenuView_fmItemWidth, (int) dp2px(DEFAULT_ITEM_SIZE_DP)));
+		setItemHeight(a.getDimensionPixelSize(R.styleable.FlyoutMenuView_fmItemHeight, (int) dp2px(DEFAULT_ITEM_SIZE_DP)));
+		setItemMargin(a.getDimensionPixelSize(R.styleable.FlyoutMenuView_fmItemMargin, (int) dp2px(DEFAULT_ITEM_MARGIN_DP)));
 
-		setMenuMargin(a.getDimensionPixelSize(R.styleable.FlyoutMenuView_menuMargin, (int) dp2px(DEFAULT_MENU_MARGIN_DP)));
-		setHorizontalMenuAnchor(a.getFloat(R.styleable.FlyoutMenuView_horizontalMenuAnchor, DEFAULT_HORIZONTAL_MENU_ANCHOR));
-		setHorizontalMenuAnchorOutside(a.getBoolean(R.styleable.FlyoutMenuView_horizontalMenuAnchorOutside, DEFAULT_HORIZONTAL_MENU_ANCHOR_OUTSIDE));
-		setVerticalMenuAnchor(a.getFloat(R.styleable.FlyoutMenuView_verticalMenuAnchor, DEFAULT_VERTICAL_MENU_ANCHOR));
-		setVerticalMenuAnchorOutside(a.getBoolean(R.styleable.FlyoutMenuView_verticalMenuAnchorOutside, DEFAULT_VERTICAL_MENU_ANCHOR_OUTSIDE));
+		setMenuMargin(a.getDimensionPixelSize(R.styleable.FlyoutMenuView_fmMenuMargin, (int) dp2px(DEFAULT_MENU_MARGIN_DP)));
+		setHorizontalMenuAnchor(a.getFloat(R.styleable.FlyoutMenuView_fmHorizontalMenuAnchor, DEFAULT_HORIZONTAL_MENU_ANCHOR));
+		setHorizontalMenuAnchorOutside(a.getBoolean(R.styleable.FlyoutMenuView_fmHorizontalMenuAnchorOutside, DEFAULT_HORIZONTAL_MENU_ANCHOR_OUTSIDE));
+		setVerticalMenuAnchor(a.getFloat(R.styleable.FlyoutMenuView_fmVerticalMenuAnchor, DEFAULT_VERTICAL_MENU_ANCHOR));
+		setVerticalMenuAnchorOutside(a.getBoolean(R.styleable.FlyoutMenuView_fmVerticalMenuAnchorOutside, DEFAULT_VERTICAL_MENU_ANCHOR_OUTSIDE));
 
 		// if a menuAnchor is defined, it will override explicit menu anchors read above
-		parseMenuAnchorSpec(a.getString(R.styleable.FlyoutMenuView_menuAnchor));
+		parseMenuAnchorSpec(a.getString(R.styleable.FlyoutMenuView_fmMenuAnchor));
 
-		setButtonDrawable(a.getDrawable(R.styleable.FlyoutMenuView_buttonSrc));
-		setButtonElevation(a.getDimensionPixelSize(R.styleable.FlyoutMenuView_buttonElevation, (int) dp2px(DEFAULT_BUTTON_ELEVATION_DP)));
-		setMenuElevation(a.getDimensionPixelSize(R.styleable.FlyoutMenuView_menuElevation, (int) dp2px(DEFAULT_MENU_ELEVATION_DP)));
+		setButtonDrawable(a.getDrawable(R.styleable.FlyoutMenuView_fmButtonSrc));
+		setButtonElevation(a.getDimensionPixelSize(R.styleable.FlyoutMenuView_fmButtonElevation, (int) dp2px(DEFAULT_BUTTON_ELEVATION_DP)));
+		setMenuElevation(a.getDimensionPixelSize(R.styleable.FlyoutMenuView_fmMenuElevation, (int) dp2px(DEFAULT_MENU_ELEVATION_DP)));
 
 		a.recycle();
 	}

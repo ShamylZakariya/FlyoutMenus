@@ -1,24 +1,24 @@
 <resources>
 	<declare-styleable name="FlyoutMenuView">
-		<attr name="buttonSize" format="dimension"/>
-		<attr name="buttonBackgroundColor" format="color"/>
-		<attr name="menuBackgroundColor" format="color"/>
-		<attr name="selectedItemBackgroundColor" format="color"/>
-		<attr name="itemWidth" format="dimension"/>
-		<attr name="itemHeight" format="dimension"/>
-		<attr name="itemMargin" format="dimension"/>
-		<attr name="horizontalMenuAnchor" format="float"/>
-		<attr name="horizontalMenuAnchorOutside" format="boolean"/>
-		<attr name="verticalMenuAnchor" format="float"/>
-		<attr name="verticalMenuAnchorOutside" format="boolean"/>
-		<attr name="menuAnchor" format="string"/>
-		<attr name="menuMargin" format="dimension"/>
-		<attr name="buttonSrc" format="reference"/>
-		<attr name="buttonElevation" format="dimension"/>
-		<attr name="menuElevation" format="dimension"/>
-		<attr name="shieldVisible" format="boolean"/>
-		<attr name="shieldColor" format="color"/>
-		<attr name="dialogMode" format="boolean"/>
+		<attr name="fmButtonSize" format="dimension"/>
+		<attr name="fmButtonBackgroundColor" format="color"/>
+		<attr name="fmMenuBackgroundColor" format="color"/>
+		<attr name="fmSelectedItemBackgroundColor" format="color"/>
+		<attr name="fmItemWidth" format="dimension"/>
+		<attr name="fmItemHeight" format="dimension"/>
+		<attr name="fmItemMargin" format="dimension"/>
+		<attr name="fmHorizontalMenuAnchor" format="float"/>
+		<attr name="fmHorizontalMenuAnchorOutside" format="boolean"/>
+		<attr name="fmVerticalMenuAnchor" format="float"/>
+		<attr name="fmVerticalMenuAnchorOutside" format="boolean"/>
+		<attr name="fmMenuAnchor" format="string"/>
+		<attr name="fmMenuMargin" format="dimension"/>
+		<attr name="fmButtonSrc" format="reference"/>
+		<attr name="fmButtonElevation" format="dimension"/>
+		<attr name="fmMenuElevation" format="dimension"/>
+		<attr name="fmShieldVisible" format="boolean"/>
+		<attr name="fmShieldColor" format="color"/>
+		<attr name="fmDialogMode" format="boolean"/>
 
 	</declare-styleable>
 </resources>

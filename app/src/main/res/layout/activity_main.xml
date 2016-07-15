@@ -21,11 +21,11 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:padding="@dimen/flyout_menu_button_padding"
-			app:buttonSize="@dimen/flyout_menu_button_size"
-			app:itemHeight="@dimen/tool_menu_item_size"
-			app:itemWidth="@dimen/tool_menu_item_size"
-			app:menuAnchor="top"
-			app:selectedItemBackgroundColor="@color/toolSelectionBackgroundColor"
+			app:fmButtonSize="@dimen/flyout_menu_button_size"
+			app:fmItemHeight="@dimen/tool_menu_item_size"
+			app:fmItemWidth="@dimen/tool_menu_item_size"
+			app:fmMenuAnchor="top"
+			app:fmSelectedItemBackgroundColor="@color/toolSelectionBackgroundColor"
 			/>
 
 		<org.zakariya.flyoutmenu.FlyoutMenuView
@@ -33,11 +33,11 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:padding="@dimen/flyout_menu_button_padding"
-			app:buttonSize="@dimen/flyout_menu_button_size"
-			app:itemHeight="@dimen/palette_menu_item_size"
-			app:itemMargin="0dp"
-			app:itemWidth="@dimen/palette_menu_item_size"
-			app:menuAnchor="top"
+			app:fmButtonSize="@dimen/flyout_menu_button_size"
+			app:fmItemHeight="@dimen/palette_menu_item_size"
+			app:fmItemMargin="0dp"
+			app:fmItemWidth="@dimen/palette_menu_item_size"
+			app:fmMenuAnchor="top"
 			/>
 
 	</LinearLayout>
@@ -61,16 +61,17 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:padding="@dimen/flyout_menu_button_padding"
-		app:buttonSize="@dimen/flyout_menu_button_size"
-		app:dialogMode="true"
-		app:itemHeight="@dimen/smiley_menu_item_size"
-		app:itemMargin="@dimen/smiley_menu_item_margin"
-		app:itemWidth="@dimen/smiley_menu_item_size"
-		app:menuAnchor="bottom"
-		app:selectedItemBackgroundColor="@color/smileyMenuSelectionColor"
-		app:shieldVisible="true"
 		android:layout_alignParentTop="true"
 		android:layout_alignParentEnd="true"
-		android:layout_alignParentRight="true"/>
+		android:layout_alignParentRight="true"
+		app:fmButtonSize="@dimen/flyout_menu_button_size"
+		app:fmDialogMode="true"
+		app:fmItemHeight="@dimen/smiley_menu_item_size"
+		app:fmItemMargin="@dimen/smiley_menu_item_margin"
+		app:fmItemWidth="@dimen/smiley_menu_item_size"
+		app:fmMenuAnchor="bottom"
+		app:fmSelectedItemBackgroundColor="@color/smileyMenuSelectionColor"
+		app:fmShieldVisible="true"
+		/>
 
 </RelativeLayout>

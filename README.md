@@ -2,7 +2,7 @@
 Simple material-style flyout menus for Android. There are many flyout type menus for Android, but this one is mine.
 
 ```gradle
-compile 'org.zakariya.flyoutmenus:flyoutmenu:0.5.1'
+compile 'org.zakariya.flyoutmenus:flyoutmenu:0.5.2'
 ```
 
 - minSdkVersion: 16
@@ -26,65 +26,65 @@ compile 'org.zakariya.flyoutmenus:flyoutmenu:0.5.1'
 	android:layout_marginRight="@dimen/flyout_menu_button_margin"
 	android:layout_marginTop="@dimen/flyout_menu_button_margin"
 	app:buttonSize="@dimen/flyout_menu_button_size"
-	app:itemHeight="@dimen/palette_menu_item_size"
-	app:itemMargin="0dp"
-	app:itemWidth="@dimen/palette_menu_item_size"
-	app:menuAnchor="top"
+	app:fmItemHeight="@dimen/palette_menu_item_size"
+	app:fmItemMargin="0dp"
+	app:fmItemWidth="@dimen/palette_menu_item_size"
+	app:fmMenuAnchor="top"
 	/>
 ```
 
-Available attributes are:
+FlyoutMenuView attributes (all have `fm` prefix) are:
 
 ```xml
 
 // the size of the button
-<attr name="buttonSize" format="dimension"/>
+<attr name="fmButtonSize" format="dimension"/>
 
 // the background color of the trigger button
-<attr name="buttonBackgroundColor" format="color"/>
+<attr name="fmButtonBackgroundColor" format="color"/>
 
 // the background color of the menu
-<attr name="menuBackgroundColor" format="color"/>
+<attr name="fmMenuBackgroundColor" format="color"/>
 
 // the color drawn behind the selected menu item
-<attr name="selectedItemBackgroundColor" format="color"/>
+<attr name="fmSelectedItemBackgroundColor" format="color"/>
 
 // width of items in the menu
-<attr name="itemWidth" format="dimension"/>
+<attr name="fmItemWidth" format="dimension"/>
 
 // height of items in the menu
-<attr name="itemHeight" format="dimension"/>
+<attr name="fmItemHeight" format="dimension"/>
 
 // margin around items in the menu
-<attr name="itemMargin" format="dimension"/>
+<attr name="fmItemMargin" format="dimension"/>
 
 // menu anchoring position (see below)
-<attr name="menuAnchor" format="string"/>
+<attr name="fmMenuAnchor" format="string"/>
 
 // margin around the menu - menu will be positioned this far away from the button, but 
 // will also use this to respect screen edges
-<attr name="menuMargin" format="dimension"/>
+<attr name="fmMenuMargin" format="dimension"/>
 
 // if provided, the trigger button will use this as a drawable
-<attr name="buttonSrc" format="reference"/>
+<attr name="fmButtonSrc" format="reference"/>
 
 // elevation for the trigger button. if 0, no shadow is drawn
-<attr name="buttonElevation" format="dimension"/>
+<attr name="fmButtonElevation" format="dimension"/>
 
 // elevation for the menu. if 0, no shadow is drawn
-<attr name="menuElevation" format="dimension"/>
+<attr name="fmMenuElevation" format="dimension"/>
 
 // if true, a shield (like for dialogs) is drawn behind the menu
-<attr name="shieldVisible" format="boolean"/>
+<attr name="fmShieldVisible" format="boolean"/>
 
 // color of shield drawn behind menu, if shieldVisible == true
-<attr name="shieldColor" format="color"/>
+<attr name="fmShieldColor" format="color"/>
 
 // if true, menu operates in "tap to open", "tap to select and dismiss" mode
-<attr name="dialogMode" format="boolean"/>
+<attr name="fmDialogMode" format="boolean"/>
 ```
 
-The `menuAnchor` parameter takes the following values: 
+The `fmMenuAnchor` attribute takes the following values: 
 
 * `top` : menu attached above the button
 * `right` | `end` : menu attached to right of button
