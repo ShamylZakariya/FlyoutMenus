@@ -25,7 +25,7 @@ compile 'org.zakariya.flyoutmenus:flyoutmenu:0.5.3'
 	android:layout_marginLeft="@dimen/flyout_menu_button_margin"
 	android:layout_marginRight="@dimen/flyout_menu_button_margin"
 	android:layout_marginTop="@dimen/flyout_menu_button_margin"
-	app:buttonSize="@dimen/flyout_menu_button_size"
+	app:fmButtonSize="@dimen/flyout_menu_button_size"
 	app:fmItemHeight="@dimen/palette_menu_item_size"
 	app:fmItemMargin="0dp"
 	app:fmItemWidth="@dimen/palette_menu_item_size"
