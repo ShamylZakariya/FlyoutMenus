@@ -16,4 +16,8 @@
 	<dimen name="smiley_menu_item_size">64dp</dimen>
 	<dimen name="smiley_menu_item_margin">8dp</dimen>
 
+	<dimen name="icon_menu_item_size">64dp</dimen>
+	<dimen name="icon_menu_item_margin">8dp</dimen>
+	<dimen name="icon_inset">2dp</dimen>
+
 </resources>

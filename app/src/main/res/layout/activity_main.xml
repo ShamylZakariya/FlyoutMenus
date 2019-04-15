@@ -74,4 +74,23 @@
 		app:fmShieldVisible="true"
 		/>
 
+	<org.zakariya.flyoutmenu.FlyoutMenuView
+		android:id="@+id/iconFlyoutMenu"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/smileyFlyoutMenu"
+		android:layout_alignParentEnd="true"
+		android:layout_alignParentRight="true"
+		android:layout_marginTop="16dp"
+		android:layout_marginBottom="0dp"
+		android:padding="@dimen/flyout_menu_button_padding"
+		app:fmButtonSize="@dimen/flyout_menu_button_size"
+		app:fmDialogMode="true"
+		app:fmItemHeight="@dimen/icon_menu_item_size"
+		app:fmItemMargin="@dimen/icon_menu_item_margin"
+		app:fmItemWidth="@dimen/icon_menu_item_size"
+		app:fmMenuAnchor="bottom"
+		app:fmSelectedItemBackgroundColor="@color/iconMenuSelectionColor"
+		app:fmShieldVisible="true" />
+
 </RelativeLayout>

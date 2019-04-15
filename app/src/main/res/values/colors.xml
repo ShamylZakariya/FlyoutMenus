@@ -6,6 +6,7 @@
 	<color name="toolFillColor">#FF303030</color>
 	<color name="smileyMenuCharColor">#FF303030</color>
 	<color name="smileyMenuSelectionColor">#33303030</color>
+	<color name="iconMenuSelectionColor">#33303030</color>
 	<color name="alphaCheckerColor">#FFD6D6D6</color>
 	<color name="toolSelectionBackgroundColor">#66FF4081</color>
 </resources>
