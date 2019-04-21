@@ -1,4 +1,4 @@
-package org.zakariya.flyoutmenu;
+package org.zakariya.flyoutmenudemo.flyoutmenusdemo;
 
 import org.junit.Test;
 

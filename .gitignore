@@ -106,3 +106,5 @@ com_crashlytics_export_strings.xml
 .Trashes
 ehthumbs.db
 Thumbs.db
+/.idea/caches
+/upload-to-bintray.sh
